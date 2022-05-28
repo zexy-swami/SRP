@@ -1,0 +1,34 @@
+version: "3.8"
+
+volumes:
+  db_data:
+    name: db_data
+
+networks:
+  shared_network:
+    name: shared_network
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    env_file: .env
+    networks:
+      - shared_network
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  SRP_web:
+    image: srp_web:latest
+    container_name: SRP_web
+    env_file: .env
+    networks:
+      - shared_network
+    ports:
+      - "443:443"
+    depends_on:
+      - postgres
+    command: /SRP_web/SRP_web

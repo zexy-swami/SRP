@@ -1,0 +1,7 @@
+.idea
+cert
+.env
+
+*.exe
+*.dll
+*.so
