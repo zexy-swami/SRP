@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-const insertStatement = "insert into users (srp_id, user_password_hash) values ($1, $2, $3, $4)"
+const insertStatement = "insert into users (srp_id, user_password_hash) values ($1, $2)"
 
 func SignupUser(firstname, lastname, password string) (srpID string, retError error) {
 	defer func() {
@@ -19,7 +19,7 @@ func SignupUser(firstname, lastname, password string) (srpID string, retError er
 	passwordHash := fmt.Sprintf("%x", sha256.Sum256([]byte(password)))
 
 	tx := dbConn.MustBegin()
-	tx.MustExec(insertStatement, srpID, firstname, lastname, passwordHash)
+	tx.MustExec(insertStatement, srpID, passwordHash)
 	if retError = tx.Commit(); retError != nil {
 		return "", retError
 	}
