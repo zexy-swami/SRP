@@ -32,3 +32,16 @@ services:
     depends_on:
       - postgres
     command: /SRP_web/SRP_web
+
+  SRP_server:
+    image: srp_server:latest
+    container_name: SRP_server
+    env_file: .env
+    networks:
+      - shared_network
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - SRP_web
+    command: /SRP_server/server
