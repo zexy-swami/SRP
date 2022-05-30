@@ -37,7 +37,7 @@ func connectionHandler(connection net.Conn) {
 		fmt.Println("User wasn't verified correctly")
 		return
 	}
-	fmt.Println("User was verified correctly")
+	fmt.Printf("User %s was verified correctly\n", srpID)
 
 	serverTestValue := serverVerifier.GenerateZValue()
 	connection.Write([]byte(serverTestValue.String() + "\n"))

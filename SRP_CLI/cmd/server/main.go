@@ -4,8 +4,8 @@ import (
 	"log"
 	"net"
 
-	"github.com/zexy-swami/SRP/SRP_CLI/internal/db"
 	"github.com/zexy-swami/SRP/SRP_CLI/internal/SRP_net"
+	"github.com/zexy-swami/SRP/SRP_CLI/internal/db"
 	"github.com/zexy-swami/SRP/SRP_CLI/pkg/parser"
 )
 

@@ -1,7 +1,7 @@
 FROM golang:latest
 
 WORKDIR /SRP_server
-RUN bash -c 'mkdir /SRP_server/{cmd,cmd/server,internal,pkg}'
+RUN bash -c 'mkdir -p /SRP_server/{cmd/server,internal,pkg}'
 
 COPY cmd/server /SRP_server/cmd/server
 COPY internal /SRP_server/internal

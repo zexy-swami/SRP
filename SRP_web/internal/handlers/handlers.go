@@ -2,11 +2,11 @@ package handlers
 
 import (
 	"fmt"
-	"github.com/zexy-swami/SRP/SRP_web/internal/db"
 	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"github.com/zexy-swami/SRP/SRP_web/internal/db"
 	"github.com/zexy-swami/SRP/SRP_web/pkg/validation"
 )
 
@@ -56,9 +56,9 @@ func verificationHandler(c *gin.Context) {
 		c.HTML(http.StatusBadRequest, "error_page.html", gin.H{
 			"Error": err.Error(),
 		})
-		return
 	} else {
-		c.String(http.StatusOK, srpID)
-		fmt.Printf("%v\n", c.Request.Header["User-Agent"])
+		c.HTML(http.StatusOK, "verification.html", gin.H{
+			"SRP_id": srpID,
+		})
 	}
 }
